@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+
+// Handling incoming Get request to /orders
 router.get('/', (req,res,next)=>{
     res.status(200).json({
         message: "orders was fetched."
