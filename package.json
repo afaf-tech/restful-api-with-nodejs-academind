@@ -1,0 +1,14 @@
+{
+  "name": "rest-shop-restful-api",
+  "version": "1.0.0",
+  "description": "This is from academind",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Afaf-tech",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
