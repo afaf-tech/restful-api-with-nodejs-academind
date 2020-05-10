@@ -2,9 +2,22 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const ProductRoutes = require('./api/routes/products');
 const OrderRoutes = require('./api/routes//orders');
+
+
+mongoose.connect(`mongodb://localhost:27017/${process.env.MONGO_DB}`,{ useNewUrlParser: true , useUnifiedTopology:true})
+    .then(()=>{
+        console.log('db connected and server has been stated.');
+        
+        
+        app.listen(8000);
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
 
 // Middleware for logging
 app.use(morgan('dev'));
