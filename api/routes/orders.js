@@ -5,10 +5,13 @@ const mongoose = require('mongoose');
 
 const Order = require('../models/order');
 const Product = require('../models/product');
+
+
 // Handling incoming Get request to /orders
 router.get('/', (req,res,next)=>{
     Order.find()
     .select('product quantity _id')
+    .populate('product', 'name')
     .exec()
     .then(docs => {
         res.status(200).json({
@@ -20,7 +23,7 @@ router.get('/', (req,res,next)=>{
                     quantity: doc.quantity,
                     request: {
                         type: 'GET',
-                        url: 'http://localhost:3000/oders/'+ doc._id
+                        url: 'http://localhost:3000/orders/'+ doc._id
                     }
                 }
             })
@@ -79,6 +82,7 @@ router.post('/', (req,res,next)=>{
 router.get('/:orderId', (req,res,next)=>{
     const id = req.params.orderId;
     Order.findById(id)
+    .populate('product', 'name')
     .exec()
     .then(order=>{
         if(!order){
