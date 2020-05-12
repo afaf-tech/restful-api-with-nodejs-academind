@@ -12,7 +12,6 @@ mongoose.connect(`mongodb://localhost:27017/${process.env.MONGO_DB}`,{ useNewUrl
     .then(()=>{
         console.log('db connected and server has been stated.');
         
-        
         app.listen(8000);
     })
     .catch((err)=>{
@@ -22,6 +21,7 @@ mongoose.Promise = global.Promise;
 
 // Middleware for logging
 app.use(morgan('dev'));
+app.use('/uploads',express.static('uploads'));
 app.use(bodyParser.urlencoded({
     extended: false
 }));

@@ -128,12 +128,5 @@ router.delete('/:orderId', (req,res,next)=>{
 });
 
 
-
-
-
-
-
-
-
 module.exports = router;
 
