@@ -1,5 +1,6 @@
 {
     "env": {
-        "MONGO_DB":"restacademind"
+        "MONGO_DB":"restacademind",
+        "JWT_KEY": "marina menari di atas menara, dan Di atas menara marina menari."
     }
 }

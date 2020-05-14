@@ -5,10 +5,11 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const ProductRoutes = require('./api/routes/products');
-const OrderRoutes = require('./api/routes//orders');
+const OrderRoutes = require('./api/routes/orders');
+const UserRoutes = require('./api/routes/user');
 
 
-mongoose.connect(`mongodb://localhost:27017/${process.env.MONGO_DB}`,{ useNewUrlParser: true , useUnifiedTopology:true})
+mongoose.connect(`mongodb://localhost:27017/${process.env.MONGO_DB}`,{ useNewUrlParser: true , useUnifiedTopology:true, useCreateIndex: true})
     .then(()=>{
         console.log('db connected and server has been stated.');
         
@@ -44,6 +45,7 @@ app.use((req,res,next)=>{
 // Routes which should handle requests
 app.use('/products', ProductRoutes );
 app.use('/orders', OrderRoutes );
+app.use('/users', UserRoutes );
 
 //Middleware for error handling
 app.use((req,res, next) => {
